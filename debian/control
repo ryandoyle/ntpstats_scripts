@@ -9,7 +9,7 @@ Standards-Version: 3.9.2
 Package: ntpstats-scripts
 Architecture: all
 Section: misc
-Depends: ntp
+Depends: ntp, rrdtool
 Description: scripts to create RRD tool graphs from ntpq queries
  Helper scripts to create, populate and graph NTP drift and offset
  using the ntp query program, ntpq
