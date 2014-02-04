@@ -4,7 +4,9 @@
   exit 1
 }
 
+HALF_STEP=15
 HOURS="$(($3 * 3600))"
+ADJUSTED_STEP="$(($3 * $HALF_STEP))"
 
 rrdtool graph $2 \
     --width 600 \
@@ -14,7 +16,7 @@ rrdtool graph $2 \
     -t "NTP statistics - last $3 hours" \
     --start -$HOURS \
     --end now \
-    --step 30 \
+    --step $ADJUSTED_STEP \
     --vertical-label "microseconds" \
     --right-axis 1:0  \
     DEF:timeoffset=$1:offset:AVERAGE \
