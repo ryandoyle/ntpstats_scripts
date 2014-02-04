@@ -1,3 +1,10 @@
-Build with
-----------
+Scripts to:
+ - Scrape ntpd output for GPS time sources
+ - Populate the offset and jitter information into an RRD file
+ - Create a graph from that RRD file
+
+Build:
   debuild --no-tgz-check
+
+Release a new version 1.1:
+  dch -v 1.1
