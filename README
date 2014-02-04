@@ -1,0 +1,3 @@
+Build with
+----------
+  debuild --no-tgz-check

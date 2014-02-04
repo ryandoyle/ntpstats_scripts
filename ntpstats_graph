@@ -1,0 +1,21 @@
+#!/bin/bash
+[ "$1" = "-h" -o $# -lt 2 ] && {
+  echo "Usage: `basename $0` RRD OUTPUT-IMAGE"
+  exit 1
+}
+rrdtool graph $2 \
+    --width 600 \
+    --height 200 \
+    --slope-mode \
+    --watermark "`date`" \
+    -t 'NTP statistics - last 2 hours' \
+    --start -7200 \
+    --end now \
+    --step 30 \
+    --vertical-label "microseconds" \
+    --right-axis 1:0  \
+    DEF:timeoffset=$1:offset:AVERAGE \
+    DEF:timejitter=$1:jitter:AVERAGE \
+    LINE1:timeoffset#0000FF:"Offset\l" \
+    LINE1:timejitter#00FF00:"Jitter\l" \
+    LINE1:0#FF0000

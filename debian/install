@@ -1,0 +1,3 @@
+ntpstats_create_rrd  usr/bin/
+ntpstats_graph usr/bin/
+ntpstats_populate_rrd usr/bin/

@@ -1,0 +1,8 @@
+#!/bin/bash
+#
+[ "$1" = "-h" -o $# -lt 1 ] && {
+  echo "Usage: `basename $0` RRD"
+  exit 1
+}
+# 30 second steps for 2 years (2102400), with a UNKNOWN when we miss more than 70 seconds
+rrdtool create $1 --step 30 DS:offset:GAUGE:70:-200:200 DS:jitter:GAUGE:70:-200:0 RRA:AVERAGE:0.5:1:2102400

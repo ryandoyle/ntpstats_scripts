@@ -1,0 +1,10 @@
+#!/bin/bash
+[ "$1" = "-h" -o $# -lt 2 ] && {
+  echo "Usage: `basename $0` RRD NTP-HOST"
+  exit 1
+}
+
+GPS_LINE=`ntpq -np $2 | grep 'o127.127.20.0    .GPS.'`
+OFFSET=`echo $GPS_LINE | awk '{print $9 * 1000}'`
+JITTER=`echo $GPS_LINE | awk '{print $10 * 1000}'`
+rrdtool update $1 N:$OFFSET:$JITTER

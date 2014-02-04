@@ -1,0 +1,15 @@
+Source: ntpstats-scripts
+Section: misc
+Priority: optional
+Maintainer: Ryan Doyle, <ryan@doylenet.net>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.9.2
+
+
+Package: ntpstats-scripts
+Architecture: all
+Section: misc
+Depends: ntp
+Description: scripts to create RRD tool graphs from ntpq queries
+ Helper scripts to create, populate and graph NTP drift and offset
+ using the ntp query program, ntpq
